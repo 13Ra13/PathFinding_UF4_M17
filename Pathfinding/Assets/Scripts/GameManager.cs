@@ -117,8 +117,6 @@ public class GameManager : MonoBehaviour
                 List<Node> currentPath = new List<Node> { nodoActual };
                 Node currentNode = nodoActual;
 
-                StartCoroutine(PrintPath(closedNodeList, token4));
-
                 foreach (Node node in closedNodeList)
                 {
                     if (currentNode.costeTotal > node.costeTotal)
@@ -127,8 +125,6 @@ public class GameManager : MonoBehaviour
                         currentNode = node;
                     }
                 }
-
-                StartCoroutine(PrintPath(currentPath, token5));
 
                 pathAcabado = true;
             }
@@ -171,13 +167,4 @@ public class GameManager : MonoBehaviour
         return bestNode;
     }
 
-
-    IEnumerator PrintPath(List<Node> path, GameObject token)
-    {
-        foreach (Node node in path)
-        {
-            InstantiateToken(token, node.posicion);
-        }
-        yield return null;
-    }
 }
